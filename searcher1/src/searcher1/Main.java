@@ -37,14 +37,8 @@ public class Main {
         XText xtext = xWriterDocument.getText();
         String text = xtext.getString().replaceAll("\r", "");
         
-        NearDuplicateSearchAlgorithm alg = new OptimizedLucivAlg(pattern, k);
+        NearDuplicateSearchAlgorithm alg = new OptimizedLucivAlg(pattern.toLowerCase(), k);
         Set<Pair<Integer, Integer>> result = alg.execute(text.toLowerCase());
-        
-        // output
-        System.out.println("-----");
-        for (Pair<Integer, Integer> pair : result)
-        	System.out.println("{" + text.substring(pair.first, pair.second) + "}");
-        System.out.println("-----");
         
         TextSelector.selectTextRanges(xtext, result, "Yu Gothic UI Semibold");
         

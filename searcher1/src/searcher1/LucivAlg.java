@@ -53,9 +53,7 @@ public class LucivAlg implements NearDuplicateSearchAlgorithm {
 				end = L_w,
         		textLength = text.length();
         
-		long time = System.currentTimeMillis(), t;
-		System.out.print("ph 1 ");
-        // Phase 1
+		// Phase 1
 		LinkedList<Pair<Integer, Integer>> W1 = new LinkedList<Pair<Integer, Integer>>();
         String w1;
         while (end < textLength) {
@@ -66,9 +64,6 @@ public class LucivAlg implements NearDuplicateSearchAlgorithm {
         	++end;
         }
         
-        t = System.currentTimeMillis();
-        System.out.print((t - time) + "\nph 2 ");
-        time = t;
         // Phase 2
         LinkedList<Pair<Integer, Integer>> W2 = new LinkedList<Pair<Integer, Integer>>();
         String w, w21, w2;
@@ -95,9 +90,6 @@ public class LucivAlg implements NearDuplicateSearchAlgorithm {
         	W2.add(new Pair<Integer, Integer>(b, e));
         }
         
-        t = System.currentTimeMillis();
-        System.out.print((t - time) + "\nph 3 ");
-        time = t;
         // Phase 3
         HashSet<Pair<Integer, Integer>> W3 = new HashSet<Pair<Integer, Integer>>(W2),
         		W31 = (HashSet<Pair<Integer, Integer>>) W3.clone();
@@ -114,9 +106,6 @@ public class LucivAlg implements NearDuplicateSearchAlgorithm {
         	if (remove)
         		W3.remove(w2pair);
         }
-        
-        t = System.currentTimeMillis();
-        System.out.print((t - time) + "\ndone");
         
         return W3;
 	}
